@@ -9,7 +9,10 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5501',  // Use environment variable for production
+  origin: [
+    process.env.FRONTEND_URL || 'http://localhost:5501',
+    'https://inventory-ms-1-9me0.onrender.com'  // Add your frontend URL
+  ],
   credentials: true
 }));
 app.use(express.json());
