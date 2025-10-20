@@ -16,6 +16,20 @@ app.use(express.json());
 app.use(express.static('public'));
 
 app.use(cookieParser());
+
+// Root route for health check
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'Inventory Management API is running!', 
+    status: 'success',
+    endpoints: {
+      inventory: '/api/inventory',
+      auth: '/api/auth',
+      calculate: '/api/calculate'
+    }
+  });
+});
+
 app.use('/api/inventory', inventoryRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/calculate', calculateRoutes);
