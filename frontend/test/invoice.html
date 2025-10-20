@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+  body {
+    font-family: Arial, sans-serif;
+    color: #222;
+    font-size: 14px;
+    margin: 20px;
+  }
+
+  .invoice-box {
+    max-width: 800px;
+    margin: auto;
+    border: 1px solid #eee;
+    padding: 20px;
+  }
+
+  .header, .footer {
+    text-align: center;
+  }
+
+  .header h1 {
+    margin-bottom: 5px;
+  }
+
+  .company-info, .customer-info {
+    margin-bottom: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  table thead {
+    background: #f8f8f8;
+  }
+
+  table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+  table th {
+    background: #eee;
+    font-weight: bold;
+  }
+
+  .total-row td {
+    border-top: 2px solid #000;
+    font-weight: bold;
+  }
+
+  .right-align {
+    text-align: right;
+  }
+</style>
+
+<div class="invoice-box">
+  <div class="header">
+    <h1>Invoice</h1>
+    <div>Company Name</div>
+    <div>Address, Phone, Email</div>
+  </div>
+
+  <div class="company-info">
+    <strong>Invoice #: </strong> 12345<br />
+    <strong>Date: </strong> 2025-07-31<br />
+    <strong>Due Date: </strong> 2025-08-15
+  </div>
+
+  <div class="customer-info">
+    <strong>Bill To:</strong><br />
+    John Doe<br />
+    123 Customer St.<br />
+    City, State, ZIP
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Qty</th>
+        <th class="right-align">Unit Price</th>
+        <th class="right-align">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Product A</td>
+        <td>2</td>
+        <td class="right-align">$50.00</td>
+        <td class="right-align">$100.00</td>
+      </tr>
+      <tr>
+        <td>Product B</td>
+        <td>1</td>
+        <td class="right-align">$75.00</td>
+        <td class="right-align">$75.00</td>
+      </tr>
+      <!-- More rows -->
+    </tbody>
+    <tfoot>
+      <tr class="total-row">
+        <td colspan="3" class="right-align">Subtotal</td>
+        <td class="right-align">$175.00</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="right-align">Tax (10%)</td>
+        <td class="right-align">$17.50</td>
+      </tr>
+      <tr class="total-row">
+        <td colspan="3" class="right-align">Total</td>
+        <td class="right-align">$192.50</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <div class="footer" style="margin-top:20px;">
+    Payment due within 15 days.<br />
+    Thank you for your business.
+  </div>
+</div>
+
+</body>
+</html>

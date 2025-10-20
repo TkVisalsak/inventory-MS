@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: inventory-backend
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    plan: starter
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: FRONTEND_URL
+        value: https://your-frontend-url.onrender.com  # Update this with your actual frontend URL
+    healthCheckPath: /api/inventory/getcategories

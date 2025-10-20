@@ -1,0 +1,34 @@
+<!-- test-getproducts.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Get Products</title>
+</head>
+<body>
+  <h1>Test /getproducts</h1>
+  <button onclick="fetchProducts()">Fetch Products</button>
+  <pre id="output"></pre>
+
+  <script>
+    async function fetchProducts() {
+      try {
+        const response = await fetch(window.getApiUrl('/api/products/getproducts'), {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({}) // Add any expected data if needed
+        });
+
+        const data = await response.json();
+        document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+      } catch (err) {
+        console.error('Fetch error:', err);
+        document.getElementById('output').textContent = 'Error fetching data: ' + err.message;
+      }
+    }
+  </script>
+  <script src="/frontend/js/modals.js"></script>
+</body>
+</html>

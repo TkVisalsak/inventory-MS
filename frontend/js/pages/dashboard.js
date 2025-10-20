@@ -1,0 +1,182 @@
+// Dashboard page module
+window.PageModules = window.PageModules || {}
+
+window.PageModules.dashboard = {
+  render: () => `
+    <div class="dashboard-header">
+      <h1>Dashboard</h1>
+      <p>Welcome to your inventory management system</p>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">
+          <i class="fas fa-box"></i>
+        </div>
+        <div class="stat-content">
+          <h3>Total Products</h3>
+          <div class="stat-number">4</div>
+          <p>Active products</p>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">
+          <i class="fas fa-dollar-sign"></i>
+        </div>
+        <div class="stat-content">
+          <h3>Inventory Value</h3>
+          <div class="stat-number">$20,250.00</div>
+          <p>Total value</p>
+        </div>
+      </div>
+
+      <div class="stat-card warning">
+        <div class="stat-icon">
+          <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        <div class="stat-content">
+          <h3>Low Stock Alert</h3>
+          <div class="stat-number">1</div>
+          <p>Items below threshold</p>
+        </div>
+      </div>
+
+      <div class="stat-card danger">
+        <div class="stat-icon">
+          <i class="fas fa-clock"></i>
+        </div>
+        <div class="stat-content">
+          <h3>Expiring Soon</h3>
+          <div class="stat-number">2</div>
+          <p>Items expiring in 30 days</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-content">
+      <div class="content-section">
+        <div class="section-header">
+          <h2>Recent Stock Movements</h2>
+          <p>Latest inventory transactions</p>
+        </div>
+        <div class="stock-movements">
+          <div class="movement-item positive">
+            <div class="movement-indicator"></div>
+            <div class="movement-details">
+              <h4>Paracetamol 500mg</h4>
+              <p class="movement-code">SO-2024-001</p>
+            </div>
+            <div class="movement-amount">
+              <span class="amount positive">+5000</span>
+              <span class="date">2024-01-15</span>
+            </div>
+          </div>
+
+          <div class="movement-item negative">
+            <div class="movement-indicator"></div>
+            <div class="movement-details">
+              <h4>Paracetamol 500mg</h4>
+              <p class="movement-code">SO-2024-001</p>
+            </div>
+            <div class="movement-amount">
+              <span class="amount negative">-500</span>
+              <span class="date">2024-01-30</span>
+            </div>
+          </div>
+
+          <div class="movement-item positive">
+            <div class="movement-indicator"></div>
+            <div class="movement-details">
+              <h4>Vitamin D3</h4>
+              <p class="movement-code">PO-2024-002</p>
+            </div>
+            <div class="movement-amount">
+              <span class="amount positive">+2500</span>
+              <span class="date">2024-02-01</span>
+            </div>
+          </div>
+
+          <div class="movement-item negative">
+            <div class="movement-indicator"></div>
+            <div class="movement-details">
+              <h4>Organic Rice</h4>
+              <p class="movement-code">SO-2024-003</p>
+            </div>
+            <div class="movement-amount">
+              <span class="amount negative">-200</span>
+              <span class="date">2024-03-15</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section">
+        <div class="section-header">
+          <h2>Category Distribution</h2>
+          <p>Products by category</p>
+        </div>
+        <div class="category-distribution">
+          <div class="category-item">
+            <div class="category-info">
+              <span class="category-name">Medicines</span>
+              <span class="category-count">1 products</span>
+            </div>
+            <div class="category-bar">
+              <div class="bar-fill" style="width: 25%"></div>
+            </div>
+          </div>
+
+          <div class="category-item">
+            <div class="category-info">
+              <span class="category-name">Food Items</span>
+              <span class="category-count">1 products</span>
+            </div>
+            <div class="category-bar">
+              <div class="bar-fill" style="width: 25%"></div>
+            </div>
+          </div>
+
+          <div class="category-item">
+            <div class="category-info">
+              <span class="category-name">Medical Equipment</span>
+              <span class="category-count">1 products</span>
+            </div>
+            <div class="category-bar">
+              <div class="bar-fill" style="width: 25%"></div>
+            </div>
+          </div>
+
+          <div class="category-item">
+            <div class="category-info">
+              <span class="category-name">Supplements</span>
+              <span class="category-count">1 products</span>
+            </div>
+            <div class="category-bar">
+              <div class="bar-fill" style="width: 25%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `,
+
+  init: function () {
+    // Animate stats when dashboard loads
+    this.animateStats()
+  },
+
+  animateStats: () => {
+    const statNumbers = document.querySelectorAll(".stat-number")
+    statNumbers.forEach((stat, index) => {
+      const finalValue = stat.textContent
+      stat.textContent = "0"
+
+      setTimeout(() => {
+        window.utils.animateNumber(stat, finalValue)
+      }, index * 200)
+    })
+  },
+}

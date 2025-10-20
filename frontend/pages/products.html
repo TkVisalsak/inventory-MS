@@ -1,0 +1,53 @@
+<div class="dashboard-header">
+  <h1>Products</h1>
+  <p>Manage your product catalog</p>
+</div>
+
+<div class="page-controls">
+  <div class="search-filters">
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Search products..." id="productSearch">
+    </div>
+    <div class="filter-group">
+      <select id="categoryFilter" class="filter-select">
+        <option value="">All Categories</option>
+        <!-- options will be injected dynamically -->
+      </select>
+      <select id="companyFilter" class="filter-select">
+        <option value="">All Companies</option>
+        <!-- options will be injected dynamically -->
+      </select>
+
+    </div>
+  </div>
+
+  <button class="btn btn-primary" onclick="openAddProductModal()">
+    <i class="fas fa-plus"></i> Add Product
+  </button>
+</div>
+
+<div class="content-section">
+  <div class="section-header">
+    <h2>Products (<span id="productCount">0</span>)</h2>
+    <p>Manage your product catalog</p>
+  </div>
+  <div class="data-table-container">
+    <table class="data-table" id="productsTable">
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>SKU</th>
+          <th>Company</th>
+          <th>Category</th>
+          <th>Unit</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="product-body">
+        <!-- Dynamic rows injected here -->
+      </tbody>
+    </table>
+  </div>
+</div>

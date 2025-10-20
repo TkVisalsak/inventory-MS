@@ -1,0 +1,101 @@
+
+<div class="dashboard-header">
+  <h1>Inventory Overview</h1>
+  <p>Complete inventory status and valuation</p>
+</div>
+
+<!-- Stats Cards -->
+ <div class="page-controls">
+  <div class="search-filters">
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Search products..." id="productSearch">
+    </div>
+    <div class="filter-group">
+      <select id="categoryFilter" class="filter-select">
+        <option value="">All Categories</option>
+        <!-- options will be injected dynamically -->
+      </select>
+      <select id="companyFilter" class="filter-select">
+        <option value="">All Companies</option>
+        <!-- options will be injected dynamically -->
+      </select>
+
+    </div>
+  </div>
+  </div>
+
+  <div class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-icon">
+      <i class="fas fa-box"></i>
+    </div>
+    <div class="stat-content">
+      <h3>Total Products</h3>
+      <div class="stat-number" id="statTotalProducts">...</div>
+      <p>Active product types</p>
+    </div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-icon">
+      <i class="fas fa-dollar-sign"></i>
+    </div>
+    <div class="stat-content">
+      <h3>Total Stock Value</h3>
+      <div class="stat-number" id="statStockValue">...</div>
+      <p>At buy-in prices</p>
+    </div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-icon">
+      <i class="fas fa-chart-line"></i>
+    </div>
+    <div class="stat-content">
+      <h3>Market Value</h3>
+      <div class="stat-number" id="statMarketValue">...</div>
+      <p>At market prices</p>
+    </div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-icon">
+      <i class="fas fa-percentage"></i>
+    </div>
+    <div class="stat-content">
+      <h3>Profit Margin</h3>
+      <div class="stat-number" id="statProfitMargin">...</div>
+      <p>Potential profit</p>
+    </div>
+  </div>
+  </div>
+
+<div class="content-section">
+  <div class="section-header">
+    <h2>Inventory Details</h2>
+    <p>Product quantities, pricing, and expiration status</p>
+  </div>
+  <div class="data-table-container">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Total Quantity</th>
+          <th>Buy-in Price</th>
+          <th>Current Price</th>
+          <th>Total Value</th>
+          <th>Oldest Expirtion</th>
+          <th>Latest Expiration</th>
+          <th>Stock Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="inventoryTableBody">
+        <tr><td colspan="7">Loading...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+

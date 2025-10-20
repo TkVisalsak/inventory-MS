@@ -1,0 +1,38 @@
+<div class="dashboard-header">
+  <h1>Customers</h1>
+  <p>Manage customer accounts and relationships</p>
+</div>
+
+<div class="page-controls">
+  <div class="search-filters">
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Search customers..." id="customerSearch">
+    </div>
+  </div>
+  <button class="btn btn-primary" onclick="openAddCustomerModal()">
+    <i class="fas fa-plus"></i> Add Customer
+  </button>
+</div>
+
+<div class="content-section">
+  <div class="data-table-container">
+    <table class="data-table" id="customersTable">
+      <thead>
+        <tr>
+          <th>Customer Name</th>
+          <th>Type</th>
+          <th>Contact</th>
+          <th>Credit Limit</th>
+          <th>Outstanding</th>
+          <th>Available Credit</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Dynamic content will be inserted here by JS -->
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="dashboard-header">
+  <h1>Stock Movements</h1>
+  <p>Track all inventory transactions</p>
+</div>
+
+<div class="page-controls">
+  <div class="search-filters">
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Search movements..." id="movementSearch">
+    </div>
+  </div>
+  <button class="btn btn-primary" onclick="openRecordMovementModal()">
+    <i class="fas fa-plus"></i> Record Movement
+  </button>
+</div>
+
+<div class="content-section">
+  <div class="data-table-container">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Product</th>
+          <th>Batch</th>
+          <th>Type</th>
+          <th>Quantity</th>
+          <th>Reference</th>
+          <th>Note</th>
+        </tr>
+      </thead>
+      <tbody id="movementTableBody">
+        <!-- Dynamic rows will be inserted here -->
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    margin: 20px;
+  }
+
+  .report-container {
+    max-width: 900px;
+    margin: auto;
+    border: 1px solid #ddd;
+    padding: 20px;
+    background: #fff;
+  }
+
+  h1, h2 {
+    text-align: center;
+    margin-bottom: 5px;
+  }
+
+  .report-header {
+    border-bottom: 2px solid #444;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+
+  .report-meta {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+
+  thead {
+    background-color: #f2f2f2;
+  }
+
+  th, td {
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    text-align: left;
+  }
+
+  th {
+    font-weight: 600;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #fafafa;
+  }
+
+  .summary-row {
+    font-weight: bold;
+    background-color: #eaeaea;
+  }
+
+  .right-align {
+    text-align: right;
+  }
+</style>
+
+<div class="report-container">
+  <div class="report-header">
+    <h1>Monthly Sales Report</h1>
+    <h2>July 2025</h2>
+  </div>
+
+  <div class="report-meta">
+    Generated on: 2025-07-31<br />
+    Prepared by: Sales Department
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Customer</th>
+        <th>Date</th>
+        <th class="right-align">Quantity</th>
+        <th class="right-align">Unit Price</th>
+        <th class="right-align">Total Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>#1001</td>
+        <td>John Doe</td>
+        <td>2025-07-05</td>
+        <td class="right-align">3</td>
+        <td class="right-align">$25.00</td>
+        <td class="right-align">$75.00</td>
+      </tr>
+      <tr>
+        <td>#1002</td>
+        <td>Jane Smith</td>
+        <td>2025-07-11</td>
+        <td class="right-align">2</td>
+        <td class="right-align">$40.00</td>
+        <td class="right-align">$80.00</td>
+      </tr>
+      <tr>
+        <td>#1003</td>
+        <td>Acme Corp</td>
+        <td>2025-07-19</td>
+        <td class="right-align">5</td>
+        <td class="right-align">$18.00</td>
+        <td class="right-align">$90.00</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr class="summary-row">
+        <td colspan="3">Total Orders</td>
+        <td class="right-align">10</td>
+        <td></td>
+        <td class="right-align">$245.00</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <div>
+    <strong>Notes:</strong><br />
+    All sales include applicable taxes.<br />
+    Report generated automatically based on the sales database.
+  </div>
+</div>
+
+</body>
+</html>

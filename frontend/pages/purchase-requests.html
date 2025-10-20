@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="/frontend/test/pos/style.css">
+
+<div id="purchaseRequestsApp">
+  <!-- Stats Cards -->
+  <div class="stats-grid" id="statsGrid">
+    <!-- Dynamic stats content will be injected here -->
+  </div>
+
+  <div class="content-section">
+    <div class="section-header">
+      <h2>Purchase Requests</h2>
+      <p>Track and manage all purchase requests</p>
+    </div>
+    <div class="data-table-container">
+      <table class="data-table" id="purchaseRequestsTable">
+        <thead>
+          <tr>
+            <th>Request #</th>
+            <th>Supplier</th>
+            <th>Requested By</th>
+            <th>Date</th>
+            <th>Expected Delivery</th>
+            <th>Priority</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="purchaseRequestsBody">
+          <!-- Rows will be dynamically injected here -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="overlay" id="overlay" style="display:none;">
+  <div class="modal">
+    <!-- modal header -->
+    <div class="modal-header">
+      <h2>Create Purchase Request</h2>
+      <button id="closeBtn">&times;</button>
+    </div>
+    <!-- modal content -->
+    <form id="purchaseForm">
+      <!-- form fields here -->
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>

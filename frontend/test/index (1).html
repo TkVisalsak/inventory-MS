@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS & Inventory System</title>
+    <link rel="stylesheet" href="/frontend/css/style.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="header-left">
+                <i class="fas fa-shopping-cart header-icon"></i>
+                <h1>Point of Sale</h1>
+            </div>
+            <div class="header-right">
+                <button class="btn btn-outline" onclick="showInventory()">
+                    <i class="fas fa-box"></i>
+                    Inventory
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <!-- Product Selection -->
+        <div class="product-section">
+            <!-- Search and Controls -->
+            <div class="controls">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="searchInput" placeholder="Search products..." class="search-input">
+                </div>
+                <select id="categoryFilter" class="select">
+                    <option value="all">All Categories</option>
+                    <option value="Medicine">Medicine</option>
+                    <option value="Supplements">Supplements</option>
+                    <option value="Health">Health</option>
+                    <option value="Equipment">Equipment</option>
+                    <option value="First Aid">First Aid</option>
+                </select>
+                <div class="view-toggle">
+                    <button id="gridView" class="view-btn active" onclick="setViewMode('grid')">
+                        <i class="fas fa-th"></i>
+                    </button>
+                    <button id="listView" class="view-btn" onclick="setViewMode('list')">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Products Display -->
+            <div id="productsContainer" class="products-container">
+                <!-- Products will be rendered here -->
+            </div>
+        </div>
+
+        <!-- Cart Sidebar -->
+        <div class="cart-sidebar">
+            <h2>Current Sale</h2>
+
+            <!-- Customer Priority Section -->
+            <div class="card priority-card">
+                <div class="card-header">
+                    <h3>Customer Request Details</h3>
+                </div>
+                <div class="card-content">
+                    <div class="form-group">
+                        <label for="customerPriority">Priority Level</label>
+                        <select id="customerPriority" class="select">
+                            <option value="">Select priority</option>
+                            <option value="LOW">Low Priority</option>
+                            <option value="MEDIUM">Medium Priority</option>
+                            <option value="HIGH">High Priority</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="requestStatus">Request Status</label>
+                        <select id="requestStatus" class="select">
+                            <option value="DRAFT">Draft</option>
+                            <option value="PENDING">Pending Approval</option>
+                            <option value="APPROVED">Approved</option>
+                            <option value="SENT">Sent to Inventory</option>
+                        </select>
+                    </div>
+                    <div id="priorityDisplay" class="priority-display" style="display: none;">
+                        <div class="badge-row">
+                            <span>Priority:</span>
+                            <span id="priorityBadge" class="badge"></span>
+                        </div>
+                        <div class="badge-row">
+                            <span>Status:</span>
+                            <span id="statusBadge" class="badge"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cart Items -->
+            <div id="cartItems" class="cart-items">
+                <div class="empty-cart">
+                    <i class="fas fa-shopping-cart empty-icon"></i>
+                    <p>Cart is empty</p>
+                </div>
+            </div>
+
+            <!-- Payment and Total -->
+            <div id="checkoutSection" class="checkout-section" style="display: none;">
+                <div class="form-group">
+                    <label for="paymentMethod">Payment Method</label>
+                    <select id="paymentMethod" class="select">
+                        <option value="">Select payment</option>
+                        <option value="cash">Cash</option>
+                        <option value="card">Card</option>
+                        <option value="mobile">Mobile Pay</option>
+                    </select>
+                </div>
+
+                <div class="card total-card">
+                    <div class="card-content">
+                        <div class="total-row">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">$0.00</span>
+                        </div>
+                        <div class="total-row">
+                            <span>Tax (8%):</span>
+                            <span id="tax">$0.00</span>
+                        </div>
+                        <div class="separator"></div>
+                        <div class="total-row total-final">
+                            <span>Total:</span>
+                            <span id="total">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="completeSale" class="btn btn-primary btn-full" onclick="completeSale()">
+                    Complete Sale - $0.00
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Purchase Requests Modal -->
+    <div id="inventoryModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Purchase Requests</h2>
+                <span class="close" onclick="closeInventory()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <!-- Summary Cards -->
+                <div class="summary-cards">
+                    <div class="summary-card blue">
+                        <div class="summary-icon">📋</div>
+                        <div class="summary-content">
+                            <h3>Total Requests</h3>
+                            <div class="summary-number">4</div>
+                            <div class="summary-subtitle">This month</div>
+                        </div>
+                    </div>
+                    <div class="summary-card yellow">
+                        <div class="summary-icon">⏳</div>
+                        <div class="summary-content">
+                            <h3>Pending Approval</h3>
+                            <div class="summary-number">1</div>
+                            <div class="summary-subtitle">Awaiting approval</div>
+                        </div>
+                    </div>
+                    <div class="summary-card green">
+                        <div class="summary-icon">💰</div>
+                        <div class="summary-content">
+                            <h3>Total Value</h3>
+                            <div class="summary-number">$6,250</div>
+                            <div class="summary-subtitle">All requests</div>
+                        </div>
+                    </div>
+                    <div class="summary-card red">
+                        <div class="summary-icon">⚠️</div>
+                        <div class="summary-content">
+                            <h3>Urgent Requests</h3>
+                            <div class="summary-number">2</div>
+                            <div class="summary-subtitle">High priority</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Requests Table -->
+                <div class="table-container">
+                    <table class="requests-table">
+                        <thead>
+                            <tr>
+                                <th>Request #</th>
+                                <th>Supplier</th>
+                                <th>Requested By</th>
+                                <th>Date</th>
+                                <th>Priority</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>PR-2024-001</td>
+                                <td>PharmaCorp Ltd</td>
+                                <td>John Manager</td>
+                                <td>2024-01-15</td>
+                                <td><span class="badge badge-high">HIGH</span></td>
+                                <td>$2,500.00</td>
+                                <td><span class="badge badge-approved">APPROVED</span></td>
+                                <td><button class="btn-icon"><i class="fas fa-eye"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>PR-2024-002</td>
+                                <td>MedSupply Co</td>
+                                <td>Jane Supervisor</td>
+                                <td>2024-01-20</td>
+                                <td><span class="badge badge-medium">MEDIUM</span></td>
+                                <td>$1,200.00</td>
+                                <td><span class="badge badge-pending">PENDING</span></td>
+                                <td><button class="btn-icon"><i class="fas fa-check-circle"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>PR-2024-003</td>
+                                <td>FoodTech Industries</td>
+                                <td>Mike Operator</td>
+                                <td>2024-02-01</td>
+                                <td><span class="badge badge-low">LOW</span></td>
+                                <td>$800.00</td>
+                                <td><span class="badge badge-draft">DRAFT</span></td>
+                                <td><button class="btn-icon"><i class="fas fa-edit"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>PR-2024-004</td>
+                                <td>MedSupply Co</td>
+                                <td>Sarah Admin</td>
+                                <td>2024-02-05</td>
+                                <td><span class="badge badge-high">HIGH</span></td>
+                                <td>$1,750.00</td>
+                                <td><span class="badge badge-sent">SENT</span></td>
+                                <td><button class="btn-icon"><i class="fas fa-eye"></i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

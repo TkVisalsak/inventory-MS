@@ -1,0 +1,50 @@
+<div class="dashboard-header">
+  <h1>Activity Log</h1>
+  <p>System activity and user action tracking</p>
+</div>
+
+<div class="page-controls">
+  <div class="search-filters">
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Search activities..." id="activitySearch">
+    </div>
+    <div class="filter-group">
+      <select class="filter-select" id="userFilter">
+        <option value="">All Users</option>
+      </select>
+      <select class="filter-select" id="actionFilter">
+        <option value="">All Actions</option>
+        <option value="create">Create</option>
+        <option value="update">Update</option>
+        <option value="delete">Delete</option>
+        <option value="login">Login</option>
+      </select>
+      <input type="date" class="filter-select" id="dateFilter" placeholder="Date">
+    </div>
+  </div>
+  <button class="btn btn-primary" onclick="exportActivityLog()">
+    <i class="fas fa-download"></i> Export Log
+  </button>
+</div>
+
+<div class="content-section">
+  <div class="data-table-container">
+    <table class="data-table" id="activityTable">
+      <thead>
+        <tr>
+          <th>Timestamp</th>
+          <th>User</th>
+          <th>Action</th>
+          <th>Resource</th>
+          <th>Details</th>
+          <th>IP Address</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="activityTableBody">
+        <!-- Dynamic rows will be injected here -->
+      </tbody>
+    </table>
+  </div>
+</div>

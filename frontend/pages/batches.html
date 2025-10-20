@@ -1,0 +1,39 @@
+<div class="dashboard-header">
+  <h1>Product Batches</h1>
+  <p>Track inventory by batch with expiration dates</p>
+</div>
+
+<div class="page-controls">
+  <div class="search-filters">
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Search batches..." id="batchSearch">
+    </div>
+  </div>
+  <button class="btn btn-primary" onclick="openAddBatchModal()">
+    <i class="fas fa-plus"></i> Add Batch
+  </button>
+</div>
+
+<div class="content-section">
+  <div class="data-table-container">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Batch Number</th>
+          <th>Expiration Date</th>
+          <th>Buy Price</th>
+          <th>Market Price</th>
+          <th>Current Stock</th>
+          <th>Location</th>
+          <!-- <th>Scheme</th> -->
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="batch-body">
+        <!-- Dynamic rows inserted here by JS module -->
+      </tbody>
+    </table>
+  </div>
+</div>

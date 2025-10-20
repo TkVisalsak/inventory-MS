@@ -1,0 +1,148 @@
+// Analytics page module
+window.PageModules = window.PageModules || {}
+
+window.PageModules.analytics = {
+  render: () => `
+    <div class="dashboard-header">
+      <h1>Analytics</h1>
+      <p>Business insights and performance metrics</p>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">
+          <i class="fas fa-dollar-sign"></i>
+        </div>
+        <div class="stat-content">
+          <h3>Total Revenue</h3>
+          <div class="stat-number">$1350.00</div>
+          <p>+12% from last month</p>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">
+          <i class="fas fa-shopping-cart"></i>
+        </div>
+        <div class="stat-content">
+          <h3>Total Orders</h3>
+          <div class="stat-number">4</div>
+          <p>+8% from last month</p>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <div class="stat-content">
+          <h3>Avg Order Value</h3>
+          <div class="stat-number">$337.50</div>
+          <p>+5% from last month</p>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">
+          <i class="fas fa-users"></i>
+        </div>
+        <div class="stat-content">
+          <h3>Active Customers</h3>
+          <div class="stat-number">3</div>
+          <p>+2 new this month</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard-content">
+      <!-- Top Selling Products -->
+      <div class="content-section">
+        <div class="section-header">
+          <h2>Top Selling Products</h2>
+          <p>Best performing products by quantity sold</p>
+        </div>
+        <div class="top-products">
+          <div class="product-rank">
+            <span class="rank">1</span>
+            <div class="product-info">
+              <h4>Paracetamol 500mg</h4>
+            </div>
+            <span class="quantity">500 units</span>
+          </div>
+          <div class="product-rank">
+            <span class="rank">2</span>
+            <div class="product-info">
+              <h4>Vitamin D3</h4>
+            </div>
+            <span class="quantity">100 units</span>
+          </div>
+          <div class="product-rank">
+            <span class="rank">3</span>
+            <div class="product-info">
+              <h4>Organic Rice</h4>
+            </div>
+            <span class="quantity">50 units</span>
+          </div>
+          <div class="product-rank">
+            <span class="rank">4</span>
+            <div class="product-info">
+              <h4>Digital Thermometer</h4>
+            </div>
+            <span class="quantity">10 units</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Customer Distribution -->
+      <div class="content-section">
+        <div class="section-header">
+          <h2>Customer Distribution</h2>
+          <p>Customers by type</p>
+        </div>
+        <div class="customer-distribution">
+          <div class="distribution-item">
+            <div class="distribution-info">
+              <span class="type-name">Hospital</span>
+              <span class="type-count">1 customers</span>
+            </div>
+            <div class="distribution-bar">
+              <div class="bar-fill" style="width: 33%"></div>
+            </div>
+          </div>
+          <div class="distribution-item">
+            <div class="distribution-info">
+              <span class="type-name">Pharmacy</span>
+              <span class="type-count">1 customers</span>
+            </div>
+            <div class="distribution-bar">
+              <div class="bar-fill" style="width: 33%"></div>
+            </div>
+          </div>
+          <div class="distribution-item">
+            <div class="distribution-info">
+              <span class="type-name">Clinic</span>
+              <span class="type-count">1 customers</span>
+            </div>
+            <div class="distribution-bar">
+              <div class="bar-fill" style="width: 33%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `,
+
+  init: () => {
+    // Initialize stats animation
+    const statNumbers = document.querySelectorAll(".stat-number")
+    statNumbers.forEach((stat, index) => {
+      const finalValue = stat.textContent
+      stat.textContent = "0"
+
+      setTimeout(() => {
+        window.utils.animateNumber(stat, finalValue)
+      }, index * 200)
+    })
+  },
+}
