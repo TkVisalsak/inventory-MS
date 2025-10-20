@@ -9,8 +9,8 @@ window.API_CONFIG = {
   // BASE_URL: window.API_BASE_URL || 'http://localhost:3000'
 };
 
-// For Render deployment, you can set this manually:
-// window.API_CONFIG.BASE_URL = 'https://your-backend-url.onrender.com';
+// For Render deployment, set this to your backend URL:
+window.API_CONFIG.BASE_URL = 'https://inventory-ms-vvwl.onrender.com';
 
 // Helper function to get full API URL
 window.getApiUrl = (endpoint) => {
